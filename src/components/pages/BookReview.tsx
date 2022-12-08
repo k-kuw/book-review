@@ -1,6 +1,12 @@
+import DefaultLayout from "../templetes/DefaultLayout";
+import BookDescription from "../organisms/BookDescription"
+
 const BookReview = () => {
   return (
-<p>BookReview</p>
+    <DefaultLayout>
+      <p>BookReview</p>
+      <BookDescription />
+    </DefaultLayout>
   )
 }
 

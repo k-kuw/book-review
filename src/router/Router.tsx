@@ -9,7 +9,9 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<BookList />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/book-review" element={<BookReview />} />
+        <Route path="/book-review" element={<BookReview />}>
+          <Route path=":title" element={<BookReview />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
