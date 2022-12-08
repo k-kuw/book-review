@@ -1,6 +1,10 @@
+import DefaultLayout from "../templetes/DefaultLayout";
+
 const Login = () => {
   return (
-<p>Login</p>
+    <DefaultLayout>
+      <p>Login</p>
+    </DefaultLayout>
   )
 }
 
