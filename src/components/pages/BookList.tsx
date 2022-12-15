@@ -1,36 +1,51 @@
 import axios from "axios";
-import { createContext, useLayoutEffect, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useLayoutEffect,
+  useState,
+} from "react";
+import type { Book } from "../../types";
 import BookListDisplay from "../organisms/BookListDisplay";
-import BookListLayout from "../templetes/BookListLayout";
+import BookListLayout from "../templates/BookListLayout";
 
-export const BookInfo = createContext<any>([]);
-export const BookName = createContext<any>("");
+export const BookInfo = createContext<Book[]>([]);
+export const BookName = createContext<Dispatch<SetStateAction<string>> | null>(
+  null
+);
 
+// BookListページ
 const BookList = () => {
-  const [bookInfo, setBookInfo] = useState("");
-  const [bookName, setBookName] = useState("one piece");
+  // api情報格納用state
+  const [bookInfo, setBookInfo] = useState<Book[]>([]);
 
+  // 検索名格納用state
+  const [bookName, setBookName] = useState<string>("one piece");
+
+  // Google Books API 情報取得
   useLayoutEffect(() => {
     const searchBookInfo = async () => {
       const _searchBookInfo = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes?q=${bookName}&maxResults=10`
+        `https://www.googleapis.com/books/v1/volumes?q=${bookName}&maxResults=10&langRestrict=ja&orderBy=relevance&printType=books`
       );
-      console.log(_searchBookInfo.data.items);
+      console.log("serch", _searchBookInfo.data.items);
       setBookInfo(_searchBookInfo.data.items);
     };
     searchBookInfo();
   }, [bookName]);
 
   return (
+    // SearchForm Component(->BookList Component)から検索名を取得するためにset関数を渡す
     <BookName.Provider value={setBookName}>
-    <BookListLayout>
-      <p>BookList</p>
+      <BookListLayout>
+        <p>BookList</p>
+        {/* 取得した本情報を共有する */}
         <BookInfo.Provider value={bookInfo}>
           <BookListDisplay />
         </BookInfo.Provider>
-    </BookListLayout>
+      </BookListLayout>
     </BookName.Provider>
-
   );
 };
 

@@ -1,11 +1,12 @@
-import DefaultLayout from "../templetes/DefaultLayout";
+import LoginLayout from "../templates/LoginLayout";
 
+// Loginページ
 const Login = () => {
   return (
-    <DefaultLayout>
+    <LoginLayout>
       <p>Login</p>
-    </DefaultLayout>
-  )
-}
+    </LoginLayout>
+  );
+};
 
 export default Login;

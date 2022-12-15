@@ -1,5 +1,7 @@
 import HeaderLink from "../atoms/HeaderLink";
+import HeaderLogin from "../molecules/HeaderLogin";
 
+// Header Component
 const Header = () => {
   return (
     <>
@@ -11,11 +13,12 @@ const Header = () => {
               <HeaderLink linkTo="/">BookList</HeaderLink>
             </li>
             <li>
-              <HeaderLink linkTo="/book-review">BookReview</HeaderLink>
-            </li>
-            <li>
               <HeaderLink linkTo="/login">Login</HeaderLink>
             </li>
+            <li>
+              <HeaderLink linkTo="/register">Register</HeaderLink>
+            </li>
+            <HeaderLogin />
           </ul>
         </nav>
       </header>

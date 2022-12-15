@@ -1,6 +1,13 @@
 import { NavLink } from "react-router-dom";
 
-const HeaderLink = ({linkTo, children}: any) => {
+// HeaderのLinkコンポーネント
+const HeaderLink = ({
+  linkTo,
+  children,
+}: {
+  linkTo: string;
+  children: string;
+}) => {
   return (
     <NavLink
       to={linkTo}

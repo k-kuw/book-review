@@ -1,6 +1,8 @@
 import { useLocation } from "react-router-dom";
 
+// 本の説明Component
 const BookDescription = () => {
+  // BookListページから渡ってくるstate取得
   const { state } = useLocation();
 
   return (
