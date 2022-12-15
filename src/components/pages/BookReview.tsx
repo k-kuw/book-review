@@ -1,13 +1,14 @@
-import DefaultLayout from "../templetes/DefaultLayout";
-import BookDescription from "../organisms/BookDescription"
+import BookReviewLayout from "../templates/BookReviewLayout";
+import BookDescription from "../organisms/BookDescription";
 
+// BookReviewページ
 const BookReview = () => {
   return (
-    <DefaultLayout>
+    <BookReviewLayout>
       <p>BookReview</p>
       <BookDescription />
-    </DefaultLayout>
-  )
-}
+    </BookReviewLayout>
+  );
+};
 
 export default BookReview;
