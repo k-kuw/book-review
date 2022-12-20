@@ -10,7 +10,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<firebase.default.User | null>(null);
   // ログイン状況監視、ユーザー情報取得
   useEffect(() => {
-    const unsubscribed = auth.onAuthStateChanged((user) => {
+    const unsubscribed = auth.onAuthStateChanged((user: any) => {
       console.log("context", user);
       setUser(user);
     });
