@@ -39,7 +39,6 @@ const BookList = () => {
     // SearchForm Component(->BookList Component)から検索名を取得するためにset関数を渡す
     <BookName.Provider value={setBookName}>
       <BookListLayout>
-        <p>BookList</p>
         {/* 取得した本情報を共有する */}
         <BookInfo.Provider value={bookInfo}>
           <BookListDisplay />

@@ -11,7 +11,8 @@ const HeaderLink = ({
   return (
     <NavLink
       to={linkTo}
-      style={({ isActive }) => (isActive ? { color: "red" } : {})}
+      style={({ isActive }) => (isActive ? { color: "brown" } : {})}
+      className="underline"
     >
       {children}
     </NavLink>

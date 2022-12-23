@@ -41,20 +41,24 @@ const ReadReview = () => {
 
   return (
     <>
-      <p>ReadReview</p>
-      <div>
+      <div className="mt-10 sm:mx-5 md:mx-10 lg:mx-20">
+        <h2 className="text-2xl font-bold text-amber-500 shadow mb-3 border-b-2 border-gray-700">レビュー</h2>
+        <ul className="mx-10">
         {reviews.map((review: Review) => {
           console.log("review", review);
           return (
-            <div key={review.id}>
-              <p>レビュー：{review.review}</p>
-              <p>ユーザーネーム：{review.id}さん</p>
+            <li key={review.id}>
+            <div className="border-2 border-black mb-3 text-white shadow">
+              <p className="text-lg">レビュー：{review.review}</p>
+              <p className="text-sm">ユーザーネーム：{review.id}さん</p>
               {review.dateTime && (
-                <p>レビュー日：{`${review.dateTime.toDate()}`}</p>
+                <p className="text-sm">投稿日：{`${review.dateTime.toDate()}`}</p>
               )}
             </div>
+            </li>
           );
         })}
+        </ul>
       </div>
     </>
   );
