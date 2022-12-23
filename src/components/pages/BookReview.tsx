@@ -5,7 +5,6 @@ import BookDescription from "../organisms/BookDescription";
 const BookReview = () => {
   return (
     <BookReviewLayout>
-      <p>BookReview</p>
       <BookDescription />
     </BookReviewLayout>
   );

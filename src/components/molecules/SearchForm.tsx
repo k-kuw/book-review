@@ -29,10 +29,15 @@ const SearchForm = () => {
             setBookNameFunc(data.searchName);
           }
         })}
+        className="p-3 flex-col"
       >
+        <div>
+        <label htmlFor="searchName" className="font-bold text-amber-500 shadow m-5">本を検索してみよう！</label>
+        </div>
         <input
           id="searchName"
           {...register("searchName", { required: "入力してください" })}
+          className="shadow border-2 rounded w-1/3 h-10 text-gray-700d focus:outline-none focus:border-amber-500 mx-3"
         />
         <ClickButton>検索</ClickButton>
         {errors.searchName && <p>{errors.searchName.message}</p>}

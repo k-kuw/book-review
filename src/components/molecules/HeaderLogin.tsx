@@ -23,11 +23,13 @@ const HeaderLogin = () => {
     <>
       {signIn && (
         <>
-          <li>
-            <p>ログイン中{signIn.displayName && `：${signIn.displayName}様`}</p>
-          </li>
-          <li>
+                      <li className="ml-2">
+
             <button onClick={logout}>ログアウト</button>
+          </li>
+          <li className="ml-2">
+
+            <p>ログイン中{signIn.displayName && `：${signIn.displayName}様`}</p>
           </li>
         </>
       )}

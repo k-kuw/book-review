@@ -5,24 +5,27 @@ import HeaderLogin from "../molecules/HeaderLogin";
 const Header = () => {
   return (
     <>
-      <header>
-        <h1>book-review</h1>
+      <header className="bg-amber-500">
+        <h1 className="text-6xl font-black text-center font-mono sha">BOOK REVIEW</h1>
         <nav>
-          <ul>
-            <li>
-              <HeaderLink linkTo="/">BookList</HeaderLink>
-            </li>
-            <li>
+          <ul className="flex flex-row-reverse">
+            <HeaderLogin />
+            <li className="ml-2">
               <HeaderLink linkTo="/login">Login</HeaderLink>
             </li>
-            <li>
+            
+            <li className="ml-2">
+
               <HeaderLink linkTo="/register">Register</HeaderLink>
             </li>
-            <HeaderLogin />
+            <li className="ml-2">
+
+              <HeaderLink linkTo="/">BookList</HeaderLink>
+            </li>
           </ul>
         </nav>
+      <hr className="border-black"/>
       </header>
-      <hr />
     </>
   );
 };

@@ -8,8 +8,12 @@ const BookListLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Header />
+      <div className="booklist-photo">
+      <div className="translucent">
       <SearchForm />
       {children}
+      </div>
+      </div>
       <Footer />
     </>
   );

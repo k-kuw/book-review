@@ -27,8 +27,12 @@ const RegisterLayout = memo(({ children }: { children: ReactNode }) => {
   return (
     <>
       <Header />
-      <UserForm onSubmit={userRegister} />
+      <div className="register-photo">
+      <div className="translucent h-screen">
       {children}
+      <UserForm onSubmit={userRegister} />
+      </div>
+      </div>
       <Footer />
     </>
   );

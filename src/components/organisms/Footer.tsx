@@ -2,9 +2,9 @@
 const Footer = () => {
   return (
     <>
-      <hr />
-      <footer>
-        <small>&copy; kuw book-review</small>
+      <footer className="bg-amber-500">
+      <hr className="border-black"/>
+        <p className="text-center p-3">&copy; kuw book-review</p>
       </footer>
     </>
   );

@@ -9,9 +9,13 @@ const BookReviewLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Header />
+      <div className="bookreview-photo">
+      <div className="translucent">
       {children}
       <ReadReview />
       <ReviewForm />
+      </div>
+      </div>
       <Footer />
     </>
   );

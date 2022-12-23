@@ -20,8 +20,12 @@ const LoginLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Header />
-      <UserForm onSubmit={userLogin} />
+      <div className="login-photo">
+      <div className="translucent h-screen">
       {children}
+      <UserForm onSubmit={userLogin} />
+      </div>
+      </div>
       <Footer />
     </>
   );
