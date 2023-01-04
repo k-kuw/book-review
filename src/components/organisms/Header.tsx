@@ -1,9 +1,8 @@
-import { memo } from "react";
 import HeaderLink from "../atoms/HeaderLink";
 import HeaderLogin from "../molecules/HeaderLogin";
 
 // Header Component
-const Header = memo(() => {
+const Header = () => {
   return (
     <>
       <header className="bg-amber-500">
@@ -29,6 +28,6 @@ const Header = memo(() => {
       </header>
     </>
   );
-});
+};
 
 export default Header;

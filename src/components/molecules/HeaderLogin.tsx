@@ -1,10 +1,10 @@
 import { signOut, User } from "@firebase/auth";
-import { memo, useContext } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../authcontext/authContext";
 import { auth } from "../../firebase";
 
 // HeaderのログインログアウトComponent
-const HeaderLogin = memo(() => {
+const HeaderLogin = () => {
   // ログイン情報の取得
   const signIn: User | null = useContext(AuthContext);
 
@@ -31,6 +31,6 @@ const HeaderLogin = memo(() => {
       )}
     </>
   );
-});
+};
 
 export default HeaderLogin;

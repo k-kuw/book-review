@@ -1,10 +1,10 @@
 import Footer from "../organisms/Footer";
 import Header from "../organisms/Header";
 import SearchForm from "../molecules/SearchForm";
-import { memo, ReactNode } from "react";
+import { ReactNode } from "react";
 
 // BookListページのtemplate
-const BookListLayout = memo(({ children }: { children: ReactNode }) => {
+const BookListLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Header />
@@ -17,6 +17,6 @@ const BookListLayout = memo(({ children }: { children: ReactNode }) => {
       <Footer />
     </>
   );
-});
+};
 
 export default BookListLayout;
