@@ -7,17 +7,17 @@ import Header from "../organisms/Header";
 // BookReviewページのtemplate
 const BookReviewLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <>
+    <div className="flex flex-col h-screen">
       <Header />
-      <div className="bookreview-photo">
-      <div className="translucent">
+      <div className="bookreview-photo h-screen">
+      <div className="translucent h-screen">
       {children}
       <ReadReview />
       <ReviewForm />
       </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

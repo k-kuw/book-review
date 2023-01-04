@@ -5,11 +5,12 @@ import UserForm from "../molecules/UserForm";
 import { memo, ReactNode } from "react";
 import type { SignIn } from "../../types";
 import { createUserWithEmailAndPassword, updateProfile } from "@firebase/auth";
+import { useNavigate } from "react-router";
 
 // Registerページのtemplate
 const RegisterLayout = memo(({ children }: { children: ReactNode }) => {
+  const navigate = useNavigate();
   const userRegister = (data: SignIn) => {
-    console.log("display", data.displayName);
     createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
         if (auth.currentUser) {
@@ -17,21 +18,19 @@ const RegisterLayout = memo(({ children }: { children: ReactNode }) => {
             displayName: data.displayName,
           });
         }
-        console.log("登録成功", data.displayName);
+        navigate("/");
       })
-      .catch(() => {
-        console.log("失敗");
-      });
+      .catch(() => {});
   };
 
   return (
     <>
       <Header />
       <div className="register-photo">
-      <div className="translucent h-screen">
-      {children}
-      <UserForm onSubmit={userRegister} />
-      </div>
+        <div className="translucent h-screen">
+          {children}
+          <UserForm onSubmit={userRegister} />
+        </div>
       </div>
       <Footer />
     </>

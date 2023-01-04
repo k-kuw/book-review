@@ -1,18 +1,19 @@
 import { memo } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
 import type { SignIn } from "../../types";
 import ClickButton from "../atoms/ClickButton";
 
+type Props = {
+  onSubmit: (data: SignIn) => void;
+};
+
 // 登録orログインform Component
-const UserForm = memo(({ onSubmit }: any) => {
+const UserForm = memo(({ onSubmit }: Props) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<SignIn>();
-
-  const navigate = useNavigate();
 
   return (
     <>
@@ -20,9 +21,9 @@ const UserForm = memo(({ onSubmit }: any) => {
       <form
         onSubmit={handleSubmit((data: SignIn) => {
           onSubmit(data);
-          navigate("/");
         })}
         className="ml-10 mt-8"
+        data-testid="submit"
       >
         {/* ユーザー登録時のみユーザーネームの入力 */}
         {window.location.href === "http://localhost:3000/register" && (
@@ -37,6 +38,11 @@ const UserForm = memo(({ onSubmit }: any) => {
               })}
               className="block border-2 rounded w-1/3 text-gray-700d focus:outline-none focus:border-amber-500 mb-3"
             />
+            {errors.displayName && (
+              <p className="font-bold text-amber-200 shadow ml-10">
+                {errors.displayName.message}
+              </p>
+            )}
           </>
         )}
         <label htmlFor="email" className="text-lg shadow text-white">
@@ -52,8 +58,13 @@ const UserForm = memo(({ onSubmit }: any) => {
             },
           })}
           className="block border-2 rounded w-1/3 text-gray-700d focus:outline-none focus:border-amber-500 mb-3"
+          data-testid="email"
         />
-        {errors.email && <p>{errors.email.message}</p>}
+        {errors.email && (
+          <p className="font-bold text-amber-200 shadow ml-10">
+            {errors.email.message}
+          </p>
+        )}
         <label htmlFor="password" className="text-lg shadow text-white">
           パスワード
         </label>
@@ -67,8 +78,13 @@ const UserForm = memo(({ onSubmit }: any) => {
             },
           })}
           className="block border-2 rounded w-1/3 text-gray-700d focus:outline-none focus:border-amber-500 mb-3"
+          data-testid="password"
         />
-        {errors.password && <p>{errors.password.message}</p>}
+        {errors.password && (
+          <p className="font-bold text-amber-200 shadow ml-10">
+            {errors.password.message}
+          </p>
+        )}
         {window.location.href === "http://localhost:3000/register" ? (
           <ClickButton>登録</ClickButton>
         ) : (

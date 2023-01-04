@@ -25,7 +25,7 @@ const ReadReview = () => {
 
   // firestoreからのreviews格納用state
   // TODO 型定義
-  const [reviews, setReviews]: any = useState([]);
+  const [reviews, setReviews] = useState<any>([]);
 
   // firestoreからのreviews取得
   useEffect(() => {
@@ -33,7 +33,7 @@ const ReadReview = () => {
     // reviewを3件取得
     const limitedReviewsCollectionRef = query(reviewsCollectionRef, limit(3));
     onSnapshot(limitedReviewsCollectionRef, (querySnapshot) => {
-      setReviews(
+      return setReviews(
         querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
       );
     });
@@ -42,22 +42,28 @@ const ReadReview = () => {
   return (
     <>
       <div className="mt-10 sm:mx-5 md:mx-10 lg:mx-20">
-        <h2 className="text-2xl font-bold text-amber-500 shadow mb-3 border-b-2 border-gray-700">レビュー</h2>
+        <h2 className="text-2xl font-bold text-amber-500 shadow mb-3 border-b-2 border-gray-700">
+          レビュー
+        </h2>
         <ul className="mx-10">
-        {reviews.map((review: Review) => {
-          console.log("review", review);
-          return (
-            <li key={review.id}>
-            <div className="border-2 border-black mb-3 text-white shadow">
-              <p className="text-lg">レビュー：{review.review}</p>
-              <p className="text-sm">ユーザーネーム：{review.id}さん</p>
-              {review.dateTime && (
-                <p className="text-sm">投稿日：{`${review.dateTime.toDate()}`}</p>
-              )}
-            </div>
-            </li>
-          );
-        })}
+          {reviews.map((review: Review) => {
+            return (
+              <li key={review.id}>
+                <div className="border-2 border-black mb-3 text-white shadow">
+                  <p className="text-lg">レビュー：{review.review}</p>
+                  <p className="text-sm">ユーザーネーム：{review.id}さん</p>
+                  {review.dateTime && (
+                    <p className="text-sm">
+                      投稿日：
+                      {new Date(
+                        review.dateTime.seconds * 1000
+                      ).toLocaleString()}
+                    </p>
+                  )}
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </>
