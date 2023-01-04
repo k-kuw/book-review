@@ -5,16 +5,19 @@ import { auth } from "../../firebase";
 import { ReactNode } from "react";
 import type { SignIn } from "../../types";
 import { signInWithEmailAndPassword } from "@firebase/auth";
+import { useNavigate } from "react-router";
+
 
 // Loginページのtemplate
 const LoginLayout = ({ children }: { children: ReactNode }) => {
+  const navigate = useNavigate()
   const userLogin = (data: SignIn) => {
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then(() => {
-        console.log("ログイン成功");
+        navigate('/')
       })
       .catch(() => {
-        console.log("失敗");
+        window.alert("失敗しました。既に登録されているメールアドレスの可能性があるため、別のメールアドレスをご使用ください。")
       });
   };
   return (

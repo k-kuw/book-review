@@ -11,28 +11,31 @@ import BookListDisplay from "../organisms/BookListDisplay";
 import BookListLayout from "../templates/BookListLayout";
 
 export const BookInfo = createContext<Book[]>([]);
-export const BookName = createContext<Dispatch<SetStateAction<string>> | null>(
-  null
-);
+export const BookName =
+  createContext<Dispatch<SetStateAction<string>> | null>(null);
 
 // BookListページ
 const BookList = () => {
   // api情報格納用state
   const [bookInfo, setBookInfo] = useState<Book[]>([]);
 
-  // 検索名格納用state
-  const [bookName, setBookName] = useState<string>("one piece");
+  // 検索名格納用state、BookReview画面から戻った場合はlocalstorageに検索名が残っているため、それをapi情報取得の初期値に設定(bookName)
+  const [bookName, setBookName] = useState<string>(
+    `${
+      localStorage.getItem("search") ? localStorage.getItem("search") : "React"
+    }`
+  );
 
   // Google Books API 情報取得
+  const searchBookInfo = async () => {
+    const _searchBookInfo = await axios.get(
+      `https://www.googleapis.com/books/v1/volumes?q=${bookName}&maxResults=10&langRestrict=ja&orderBy=relevance&printType=books`
+    );
+    setBookInfo(_searchBookInfo.data.items);
+  };
   useLayoutEffect(() => {
-    const searchBookInfo = async () => {
-      const _searchBookInfo = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes?q=${bookName}&maxResults=10&langRestrict=ja&orderBy=relevance&printType=books`
-      );
-      console.log("serch", _searchBookInfo.data.items);
-      setBookInfo(_searchBookInfo.data.items);
-    };
     searchBookInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bookName]);
 
   return (
