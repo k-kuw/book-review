@@ -2,7 +2,7 @@ import { db } from "../../firebase";
 import { useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import { AuthContext } from "../../authcontext/authContext";
 import ClickButton from "../atoms/ClickButton";
 import { User } from "@firebase/auth";
@@ -11,7 +11,7 @@ type Input = {
   myReview: string;
 };
 
-const ReviewForm = () => {
+const ReviewForm = memo(() => {
   // BookListページから渡ってくるstate取得
   const { state } = useLocation();
 
@@ -77,6 +77,6 @@ const ReviewForm = () => {
       <p className="text-white pb-5">※ログインするとレビューを投稿できます</p>
     </div>
   );
-};
+});
 
 export default ReviewForm;

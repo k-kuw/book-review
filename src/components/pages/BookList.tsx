@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   createContext,
   Dispatch,
+  memo,
   SetStateAction,
   useLayoutEffect,
   useState,
@@ -15,7 +16,7 @@ export const BookName =
   createContext<Dispatch<SetStateAction<string>> | null>(null);
 
 // BookListページ
-const BookList = () => {
+const BookList = memo(() => {
   // api情報格納用state
   const [bookInfo, setBookInfo] = useState<Book[]>([]);
 
@@ -49,6 +50,6 @@ const BookList = () => {
       </BookListLayout>
     </BookName.Provider>
   );
-};
+});
 
 export default BookList;

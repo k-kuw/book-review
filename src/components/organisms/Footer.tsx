@@ -1,5 +1,7 @@
+import { memo } from "react";
+
 // Footer Component
-const Footer = () => {
+const Footer = memo(() => {
   return (
     <>
       <footer className="bg-amber-500 mt-auto">
@@ -8,6 +10,6 @@ const Footer = () => {
       </footer>
     </>
   );
-};
+});
 
 export default Footer;
