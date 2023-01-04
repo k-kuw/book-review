@@ -1,7 +1,7 @@
 import ClickButton from "../atoms/ClickButton";
 import { useForm } from "react-hook-form";
 import { BookName } from "../pages/BookList";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 
 // 検索form入力の型定義
 type Input = {
@@ -9,7 +9,7 @@ type Input = {
 };
 
 // 検索フォームコンポーネント
-const SearchForm = () => {
+const SearchForm = memo(() => {
   // react-hook-form使用
   const {
     register,
@@ -55,6 +55,6 @@ const SearchForm = () => {
       </form>
     </>
   );
-};
+});
 
 export default SearchForm;

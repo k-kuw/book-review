@@ -1,11 +1,11 @@
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Book } from "../../types";
 import { BookInfo } from "../pages/BookList";
 import useMedia from "use-media";
 
 // 本リストComponent
-const BookListDisplay = () => {
+const BookListDisplay = memo(() => {
   // 検索後の本リスト取得
   const bookList: Book[] | string = useContext(BookInfo);
 
@@ -96,6 +96,6 @@ const BookListDisplay = () => {
       </ul>
     </>
   );
-};
+});
 
 export default BookListDisplay;
