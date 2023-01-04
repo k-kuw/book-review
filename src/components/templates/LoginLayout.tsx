@@ -2,14 +2,14 @@ import Footer from "../organisms/Footer";
 import Header from "../organisms/Header";
 import UserForm from "../molecules/UserForm";
 import { auth } from "../../firebase";
-import { memo, ReactNode } from "react";
+import { ReactNode } from "react";
 import type { SignIn } from "../../types";
 import { signInWithEmailAndPassword } from "@firebase/auth";
 import { useNavigate } from "react-router";
 
 
 // Loginページのtemplate
-const LoginLayout = memo(({ children }: { children: ReactNode }) => {
+const LoginLayout = ({ children }: { children: ReactNode }) => {
   const navigate = useNavigate()
   const userLogin = (data: SignIn) => {
     signInWithEmailAndPassword(auth, data.email, data.password)
@@ -32,6 +32,6 @@ const LoginLayout = memo(({ children }: { children: ReactNode }) => {
       <Footer />
     </>
   );
-});
+};
 
 export default LoginLayout;

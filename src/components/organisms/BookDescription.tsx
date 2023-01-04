@@ -1,8 +1,7 @@
-import { memo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 // 本の説明Component
-const BookDescription = memo(() => {
+const BookDescription = () => {
   // BookListページから渡ってくるstate取得
   const { state } = useLocation();
 
@@ -57,6 +56,6 @@ const BookDescription = memo(() => {
       )}
     </div>
   );
-});
+};
 
 export default BookDescription;

@@ -1,8 +1,7 @@
-import { memo } from "react";
 import { NavLink } from "react-router-dom";
 
 // HeaderのLinkコンポーネント
-const HeaderLink = memo(({
+const HeaderLink = ({
   linkTo,
   children,
 }: {
@@ -18,6 +17,6 @@ const HeaderLink = memo(({
       {children}
     </NavLink>
   );
-});
+};
 
 export default HeaderLink;

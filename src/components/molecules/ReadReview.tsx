@@ -6,7 +6,7 @@ import {
   query,
   Timestamp,
 } from "firebase/firestore";
-import { memo, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 // reviewの型定義
@@ -16,7 +16,7 @@ interface Review {
   dateTime: Timestamp;
 }
 
-const ReadReview = memo(() => {
+const ReadReview = () => {
   // BookListページから渡ってくるstate取得
   const { state } = useLocation();
 
@@ -68,6 +68,6 @@ const ReadReview = memo(() => {
       </div>
     </>
   );
-});
+};
 
 export default ReadReview;
